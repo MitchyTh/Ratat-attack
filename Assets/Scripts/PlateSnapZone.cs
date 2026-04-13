@@ -1,80 +1,41 @@
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class PlateSnapZone : MonoBehaviour
 {
-    [Header("References")]
-    public Transform stackPoint;
+    public PlateAssembly plateAssembly;
 
-    [Header("Recipe Order")]
-    public IngredientType[] recipeOrder;
+    private void Reset()
+    {
+        Collider col = GetComponent<Collider>();
+        col.isTrigger = true;
+    }
 
-    [Header("Stack Heights")]
-    public float[] stackHeights;
+    public void TrySnapIngredient(IngredientItem ingredient)
+    {
+        if (plateAssembly == null)
+            return;
 
-    private List<IngredientItem> attachedIngredients = new List<IngredientItem>();
+        plateAssembly.TryAttachIngredient(ingredient);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         IngredientItem ingredient = other.GetComponentInParent<IngredientItem>();
+
         if (ingredient != null && !ingredient.isAttached)
         {
-            ingredient.currentSnapZone = this;
+            ingredient.SetCurrentSnapZone(this);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         IngredientItem ingredient = other.GetComponentInParent<IngredientItem>();
-        if (ingredient != null && ingredient.currentSnapZone == this)
+
+        if (ingredient != null && !ingredient.isAttached)
         {
-            ingredient.currentSnapZone = null;
+            ingredient.SetCurrentSnapZone(null);
         }
-    }
-
-    public bool TryAttachIngredient(IngredientItem ingredient)
-    {
-        if (ingredient == null)
-            return false;
-
-        if (ingredient.isAttached)
-            return false;
-
-        int nextIndex = attachedIngredients.Count;
-
-        if (nextIndex >= recipeOrder.Length)
-        {
-            Debug.Log("Plate is already full.");
-            return false;
-        }
-
-        if (ingredient.ingredientType != recipeOrder[nextIndex])
-        {
-            Debug.Log("Wrong ingredient. Expected: " + recipeOrder[nextIndex]);
-            return false;
-        }
-
-        float yOffset = 0f;
-
-        if (nextIndex < stackHeights.Length)
-        {
-            yOffset = stackHeights[nextIndex];
-        }
-
-        Vector3 localSnapPosition = new Vector3(0f, yOffset, 0f);
-        Quaternion localSnapRotation = Quaternion.identity;
-
-        ingredient.AttachToPlate(stackPoint, localSnapPosition, localSnapRotation);
-        attachedIngredients.Add(ingredient);
-        ingredient.currentSnapZone = null;
-
-        Debug.Log("Attached: " + ingredient.ingredientType);
-
-        return true;
-    }
-
-    public bool IsBurgerComplete()
-    {
-        return attachedIngredients.Count == recipeOrder.Length;
     }
 }
