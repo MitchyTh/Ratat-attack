@@ -85,4 +85,8 @@ public class PlateAssembly : MonoBehaviour
     {
         return isComplete;
     }
+    public void destroyPlate()
+    {
+        Destroy(gameObject);
+    }
 }
