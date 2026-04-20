@@ -140,6 +140,10 @@ public class RatMovement : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
+        // Reset Y and Z rotation to 0, keep X
+        Vector3 rot = transform.eulerAngles;
+        transform.eulerAngles = new Vector3(rot.x, 0f, 0f);
+
         controller.enabled = true;
     }
 }
