@@ -1,5 +1,8 @@
+using Newtonsoft.Json.Bson;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(CharacterController))]
 public class RatMovement : MonoBehaviour
@@ -25,15 +28,27 @@ public class RatMovement : MonoBehaviour
     private float verticalVelocity;
     private float xRotation;
 
+    public GameObject eatSenseBox;
+    private EatScript eatScript;
+    private Rigidbody rb;
+    private XRGrabInteractable grabInteractable;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        grabInteractable = GetComponent<XRGrabInteractable>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        eatScript = eatSenseBox.GetComponent<EatScript>();
+        if (grabInteractable != null)
+        {
+            grabInteractable.selectEntered.AddListener(OnGrab);
+            grabInteractable.selectExited.AddListener(OnRelease);
+        }
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -54,8 +69,21 @@ public class RatMovement : MonoBehaviour
         }
     }
 
+    public void OnEat(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (eatScript.canEatThis)
+            {
+                eatScript.foodScript.getEaten();
+            }
+        }
+    }
+
     private void Update()
     {
+        if (!controller.enabled) return;
+
         HandleLook();
         HandleMovement();
     }
@@ -90,5 +118,28 @@ public class RatMovement : MonoBehaviour
         move.y = verticalVelocity;
 
         controller.Move(move * moveSpeed * Time.deltaTime);
+    }
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        controller.enabled = false;
+
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+    }
+
+    private void OnRelease(SelectExitEventArgs args)
+    {
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        controller.enabled = true;
     }
 }
