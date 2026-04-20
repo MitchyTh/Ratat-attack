@@ -521,6 +521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin Hands (XR Rig) MP Template Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7174019212652907435, guid: 77ac6b10722bcca4a8baf70e44d89e78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7413506793532227578, guid: 77ac6b10722bcca4a8baf70e44d89e78,
         type: 3}
       propertyPath: m_AnchorMax.y
