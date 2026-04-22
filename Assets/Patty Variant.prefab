@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patty Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 439899842714152924, guid: fa2f66319f492f24a9de128f6d994e36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Food
+      objectReference: {fileID: 0}
     - target: {fileID: 959555063780111718, guid: fa2f66319f492f24a9de128f6d994e36,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -103,6 +108,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2159750675535496154}
+    - targetCorrespondingSourceObject: {fileID: 439899842714152924, guid: fa2f66319f492f24a9de128f6d994e36,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5907487054035526474}
   m_SourcePrefab: {fileID: 100100000, guid: fa2f66319f492f24a9de128f6d994e36, type: 3}
 --- !u!1 &1356626598734086490 stripped
 GameObject:
@@ -252,7 +261,7 @@ MonoBehaviour:
   m_SmoothScale: 0
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
-  m_ThrowOnDetach: 1
+  m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
@@ -276,7 +285,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_FarAttachMode: 0
+  m_FarAttachMode: 1
   m_LimitLinearVelocity: 0
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
@@ -302,3 +311,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4748255, y: 1.6165816, z: 0.6555873}
   m_Center: {x: -0.017595014, y: 0.011333178, z: 0.22541708}
+--- !u!114 &5907487054035526474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356626598734086490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0f60ef9a074434f815b0e1436b078d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

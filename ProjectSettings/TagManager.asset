@@ -12,6 +12,8 @@ TagManager:
   - player1
   - player2
   - WhitePlate
+  - ood
+  - Food
   layers:
   - Default
   - TransparentFX
