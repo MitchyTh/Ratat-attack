@@ -23,8 +23,8 @@ public class foodWindowScript : MonoBehaviour
             if (plateAssembly.isComplete == true)
             {
                 gameManager.increaseScore(100);
-                plateAssembly.destroyPlate();
             }
+            plateAssembly.destroyPlate();
         }
     }
 }
