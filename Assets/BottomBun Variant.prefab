@@ -91,6 +91,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
+<<<<<<< Updated upstream
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6449465899171526885, guid: f0b81fd38fa06824fa0701b217638c94,
         type: 3}
@@ -323,3 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0f60ef9a074434f815b0e1436b078d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0b81fd38fa06824fa0701b217638c94, type: 3}
+>>>>>>> Stashed changes
