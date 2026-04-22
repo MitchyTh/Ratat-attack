@@ -32,6 +32,7 @@ public class RatMovement : MonoBehaviour
     private EatScript eatScript;
     private Rigidbody rb;
     private XRGrabInteractable grabInteractable;
+    public TrashScript trashScript;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -79,6 +80,18 @@ public class RatMovement : MonoBehaviour
             }
         }
     }
+    public void OnTipTrash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (eatScript.canTipTrash && trashScript.notTrash)
+            {
+                trashScript.notTrash = false;
+                trashScript.SpawnTrash();
+            }
+        }
+    }
+
 
     private void Update()
     {

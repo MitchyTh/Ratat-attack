@@ -4,6 +4,7 @@ using UnityEngine;
 public class EatScript : MonoBehaviour
 {
     public bool canEatThis;
+    public bool canTipTrash;
     public FoodScript foodScript;
     private void OnTriggerEnter(Collider other)
     {;
@@ -12,6 +13,11 @@ public class EatScript : MonoBehaviour
             canEatThis = true;
             foodScript = other.GetComponent<FoodScript>();
         }
+
+        if (other.CompareTag("Trash"))
+        {
+            canTipTrash = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -19,6 +25,11 @@ public class EatScript : MonoBehaviour
         {
             canEatThis = false;
             foodScript = null;
+        }
+
+            if (other.CompareTag("Trash"))
+            {
+                canTipTrash = false;
         }
     }
 }
