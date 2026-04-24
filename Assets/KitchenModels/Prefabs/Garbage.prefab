@@ -1386,6 +1386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584304943969778100}
   - component: {fileID: 5923119566877535610}
+  - component: {fileID: 2397083659519918547}
   m_Layer: 0
   m_Name: Garbage
   m_TagString: Untagged
@@ -1463,8 +1464,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8362372, y: 0.51828593, z: 1.9477289}
-  m_Center: {x: 4.4061966, y: 6.9013944, z: -5.9495277}
+  m_Size: {x: 0.9533049, y: 0.19065355, z: 1.9477289}
+  m_Center: {x: 4.4647284, y: 6.231352, z: -5.9495277}
+--- !u!114 &2397083659519918547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973311867831487557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a50a4edef37d5b43a3654b983dfe419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveProvider: {fileID: 0}
+  slowSpeed: 1
 --- !u!1 &5035258708291493215
 GameObject:
   m_ObjectHideFlags: 0
