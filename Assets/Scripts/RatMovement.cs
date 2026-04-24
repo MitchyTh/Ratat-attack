@@ -84,9 +84,9 @@ public class RatMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (eatScript.canTipTrash && trashScript.notTrash)
+            if (eatScript.canTipTrash && !trashScript.trashThere)
             {
-                trashScript.notTrash = false;
+                trashScript.trashThere = true;
                 trashScript.SpawnTrash();
             }
         }

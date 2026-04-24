@@ -27,9 +27,9 @@ public class EatScript : MonoBehaviour
             foodScript = null;
         }
 
-            if (other.CompareTag("Trash"))
-            {
-                canTipTrash = false;
+        if (other.CompareTag("Trash"))
+        {
+            canTipTrash = false;
         }
     }
 }
